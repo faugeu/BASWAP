@@ -6,6 +6,7 @@ import csv
 import os
 import pytz
 from datetime import date, timedelta, datetime
+from drive_handler import DriveManager
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
@@ -73,3 +74,6 @@ if __name__ == "__main__":
 
     print(f'Data successfully saved to {csv_filename}')
     logger.info(f'Data of thinkspeak successfully saved to {csv_filename}')
+
+    drive_handler = DriveManager()
+    upload_file(csv_filename, "1YtqvPlqmHrxI5oHlBBq_FgO2vQhi76A-")
