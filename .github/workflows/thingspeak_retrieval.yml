@@ -2,7 +2,7 @@ name: thingspeak retrieval
 
 on:
   schedule:
-    - cron: '0 * * * *' # At 09:00 everyday
+    - cron: '*/5 * * * *' # At 09:00 everyday
 
 jobs:
   build:
