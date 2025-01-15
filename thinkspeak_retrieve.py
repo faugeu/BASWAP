@@ -19,16 +19,7 @@ formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(messag
 logger_file_handler.setFormatter(formatter)
 logger.addHandler(logger_file_handler)
 
-try:
-    SOME_SECRET = os.environ["SOME_SECRET"]
-except KeyError:
-    SOME_SECRET = "Token not available!"
-    #logger.info("Token not available!")
-    #raise
-
-
 if __name__ == "__main__":
-    # logger.info(f"Token value: {SOME_SECRET}")    
     # Default extracted_date to yesterday (in local time, GMT+7)
     extracted_date = date.today() - timedelta(days=1)
 
@@ -37,14 +28,11 @@ if __name__ == "__main__":
 
     date_difference = (date.today() - extracted_date).days + 1
 
-    # Specify the folder where files are saved
-    folder_path = 'EC'
-
     # Generate a dynamic filename by the current day
-    csv_filename = os.path.join(folder_path, f'{extracted_date.strftime("%Y-%m-%d")}.csv')
+    csv_filename = os.path.join(f'{extracted_date.strftime("%Y-%m-%d")}.csv')
 
-    url = f"https://api.thingspeak.com/channels/2652379/feeds.json?results={2880 * date_difference}" # change this to other numbers if want to get more or less value, approximately 1440 measurements a day
-
+    # approximately 1440 measurements a day
+    url = f"https://api.thingspeak.com/channels/2652379/feeds.json?results={2880 * date_difference}" 
     stored_do_values = []
     csv_data = [['Timestamp (GMT+7)', 'DO Value', 'DO Temperature', 'EC Value (us/cm)', 'EC Temperature', 'Battery Voltage']]  # CSV header
 
