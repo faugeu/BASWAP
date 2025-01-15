@@ -1,8 +1,9 @@
 name: thingspeak retrieval
 
 on:
+  workflow_dispatch:
   schedule:
-    - cron: '*/5 * * * *' # At 09:00 everyday
+    - cron: '0 0 * * *' # At 09:00 everyday
 
 jobs:
   build:
