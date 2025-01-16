@@ -27,4 +27,6 @@ jobs:
       #     pip3 install torch torchvision torchaudio
           
       - name: execute py script
+        env:
+            SERVICE_ACCOUNT: ${{ secrets.SECRET_SERVICE_ACCOUNT }}
         run: python thinkspeak_retrieve.py
