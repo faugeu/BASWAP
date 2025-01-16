@@ -11,13 +11,18 @@ class DriveManager:
         """Initialize the DriveManager with service account credentials."""
         print("[INFO] Initializing DriveManager...")
 
-        service_account_json = os.environ["SERVICE_ACCOUNT"].decode("ascii")
-        if not service_account_json:
+        base64_string = os.environ["SERVICE_ACCOUNT"]
+        base64_bytes = base64_string.encode("ascii")
+
+        json_bytes = base64.b64decode(base64_bytes)
+        json_string = json_bytes.decode("ascii")
+
+        if not json_string:
             raise ValueError("[ERROR] Service account information is required")
 
         print("[INFO] Parsing service account JSON...")
         scopes = scopes or ['https://www.googleapis.com/auth/drive']
-        service_account_info = json.loads(service_account_json)
+        service_account_info = json.loads(json_string)
 
         print("[INFO] Creating credentials...")
         self.credentials = service_account.Credentials.from_service_account_info(service_account_info, scopes=scopes)
