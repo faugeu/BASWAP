@@ -76,4 +76,4 @@ if __name__ == "__main__":
     logger.info(f'Data of thinkspeak successfully saved to {csv_filename}')
 
     drive_handler = DriveManager()
-    upload_file(csv_filename, "1YtqvPlqmHrxI5oHlBBq_FgO2vQhi76A-")
+    drive_handler.upload_file(csv_filename, "1YtqvPlqmHrxI5oHlBBq_FgO2vQhi76A-")
