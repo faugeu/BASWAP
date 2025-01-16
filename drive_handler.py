@@ -10,9 +10,9 @@ class DriveManager:
         """Initialize the DriveManager with service account credentials."""
         print("[INFO] Initializing DriveManager...")
 
-        service_account_json = os.environ["SECRET_SERVICE_ACCOUNT"]
+        service_account_json = os.environ["SERVICE_ACCOUNT"]
         if not service_account_json:
-            raise ValueError("[ERROR] Service account JSON is required")
+            raise ValueError("[ERROR] Service account information is required")
 
         print("[INFO] Parsing service account JSON...")
         scopes = scopes or ['https://www.googleapis.com/auth/drive']
