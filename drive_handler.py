@@ -1,3 +1,4 @@
+import base64
 import os
 import json
 from google.oauth2 import service_account
@@ -10,7 +11,7 @@ class DriveManager:
         """Initialize the DriveManager with service account credentials."""
         print("[INFO] Initializing DriveManager...")
 
-        service_account_json = os.environ["SERVICE_ACCOUNT"]
+        service_account_json = os.environ["SERVICE_ACCOUNT"].decode("ascii")
         if not service_account_json:
             raise ValueError("[ERROR] Service account information is required")
 
