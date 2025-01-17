@@ -21,8 +21,8 @@ logger_file_handler.setFormatter(formatter)
 logger.addHandler(logger_file_handler)
 
 if __name__ == "__main__":
-    # extracted_date = date.today()  # Default time zone is UTC so at 1am in UTC+7, it is still counted as yesterday
-    extracted_date = date.today() - timedelta(days=1) # Default extracted_date to yesterday 
+    extracted_date = date.today()  # Default time zone is UTC so at 1am in UTC+7, it is still counted as yesterday
+    # extracted_date = date.today() - timedelta(days=1) # Default extracted_date to yesterday 
 
     #Uncomment the following line to choose a custom date manually
     # extracted_date = date(2024, 10, 4)  # Example: Custom date (YYYY, MM, DD)
